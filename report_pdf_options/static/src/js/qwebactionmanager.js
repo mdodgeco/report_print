@@ -19,7 +19,7 @@ odoo.define('pdf_report_options.report', function(require) {
         'broken': _lt('Your installation of Wkhtmltopdf seems to be broken. The report will be shown in html.<br><br><a href="http://wkhtmltopdf.org/" target="_blank">wkhtmltopdf.org</a>')
     };
 
-    ActionManager.include({
+//    ActionManager.include({
 //        _showDialogPdfOption: function(action, options) {
 //            var self = this;
 //            var btnClose = function() {
@@ -40,35 +40,35 @@ odoo.define('pdf_report_options.report', function(require) {
 //                });
 //            });
 //        },
-        _downloadReport: function (url) {
-            var self = this;
-            framework.blockUI();
-            return new Promise(function (resolve, reject) {
-                var type = 'qweb-' + url.split('/')[2];
-                var blocked = !session.get_file({
-                    url: '/report/download',
-                    data: {
-                        data: JSON.stringify([url, type, self.pdfReportOption]),
-                        context: JSON.stringify(session.user_context),
-                    },
-                    success: resolve,
-                    error: (error) => {
-                        self.call('crash_manager', 'rpc_error', error);
-                        reject();
-                    },
-                    complete: framework.unblockUI,
-                });
-                if (blocked) {
-                    // AAB: this check should be done in get_file service directly,
-                    // should not be the concern of the caller (and that way, get_file
-                    // could return a promise)
-                    var message = _t('A popup window with your report was blocked. You ' +
-                                     'may need to change your browser settings to allow ' +
-                                     'popup windows for this page.');
-                    self.do_warn(_t('Warning'), message, true);
-                }
-            });
-        },
+//        _downloadReport: function (url) {
+//            var self = this;
+//            framework.blockUI();
+//            return new Promise(function (resolve, reject) {
+//                var type = 'qweb-' + url.split('/')[2];
+//                var blocked = !session.get_file({
+//                    url: '/report/download',
+//                    data: {
+//                        data: JSON.stringify([url, type, self.pdfReportOption]),
+//                        context: JSON.stringify(session.user_context),
+//                    },
+//                    success: resolve,
+//                    error: (error) => {
+//                        self.call('crash_manager', 'rpc_error', error);
+//                        reject();
+//                    },
+//                    complete: framework.unblockUI,
+//                });
+//                if (blocked) {
+//                    // AAB: this check should be done in get_file service directly,
+//                    // should not be the concern of the caller (and that way, get_file
+//                    // could return a promise)
+//                    var message = _t('A popup window with your report was blocked. You ' +
+//                                     'may need to change your browser settings to allow ' +
+//                                     'popup windows for this page.');
+//                    self.do_warn(_t('Warning'), message, true);
+//                }
+//            });
+//        },
 //        _executeReportAction: function(action, options) {
 //            var self = this;
 //
@@ -100,6 +100,6 @@ odoo.define('pdf_report_options.report', function(require) {
 //                    action.report_type, action);
 //                return Promise.reject();
 //            }
-        }
-    });
+//        }
+//    });
 });

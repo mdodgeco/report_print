@@ -14,7 +14,7 @@
     'images': ['images/main_1.png', 'images/main_screenshot.png'],
     'depends': ['web'],
     'data': [
-        # 'views/templates.xml',
+        'views/templates.xml',
         'views/ir_actions_report.xml',
     ],
     'qweb': [

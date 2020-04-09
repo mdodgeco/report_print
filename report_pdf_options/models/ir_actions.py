@@ -10,4 +10,4 @@ class IrActionsReportXml(models.Model):
         ('print', 'Print'),
         ('download', 'Download'),
         ('open', 'Open')
-    ], string='Default printing option')
+    ], string='Default printing option', default='download')

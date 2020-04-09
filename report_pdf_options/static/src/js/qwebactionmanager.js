@@ -118,7 +118,7 @@ odoo.define('pdf_report_options.report', function(require) {
                             return self._triggerDownload(action, options, 'pdf');
                         } else {
                             self.pdfReportOption = 'download';
-                            return self._showDialogPdfOption(action, options, 'pdf');
+                            return self._triggerDownload(action, options, 'pdf');
                         }
                     } else {
                         // open the report in the client action if generating the PDF is not possible

@@ -9,5 +9,6 @@ class IrActionsReportXml(models.Model):
     default_print_option = fields.Selection(selection=[
         ('print', 'Print'),
         ('download', 'Download'),
-        ('open', 'Open')
+        ('open', 'Open'),
+        ('choose', 'Choose')
     ], string='Default printing option', default='download')

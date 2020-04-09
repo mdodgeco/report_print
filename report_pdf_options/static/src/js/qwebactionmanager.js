@@ -112,10 +112,12 @@ odoo.define('pdf_report_options.report', function(require) {
                     }
                     if (state === 'upgrade' || state === 'ok') {
                         if (action.default_print_option) {
-                            self.pdfReportOption = action.default_print_option;
+                            self.pdfReportOption = 'download'; //action.default_print_option;
                             return self._triggerDownload(action, options, 'pdf');
                         } else {
-                            return self._showDialogPdfOption(action, options);
+                            self.pdfReportOption = 'download'; //action.default_print_option;
+                            return self._triggerDownload(action, options, 'pdf');
+                            //return self._showDialogPdfOption(action, options);
                         }
                     } else {
                         // open the report in the client action if generating the PDF is not possible

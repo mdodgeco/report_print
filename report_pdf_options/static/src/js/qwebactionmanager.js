@@ -111,15 +111,13 @@ odoo.define('pdf_report_options.report', function(require) {
                         self.do_notify(_t('Report'), WKHTMLTOPDF_MESSAGES[state], true);
                     }
                     if (state === 'upgrade' || state === 'ok') {
-                        if (action.default_print_option === 'choose') {
-                            return self._showDialogPdfOption(action, options);
-                        } else if (action.default_print_option) {
-//                            self.pdfReportOption = action.default_print_option;
-                            self.pdfReportOption = 'download';
+                        if (action.default_print_option) {
+                            self.pdfReportOption = 'download'; //action.default_print_option;
                             return self._triggerDownload(action, options, 'pdf');
                         } else {
-                            self.pdfReportOption = 'download';
-                            return self._showDialogPdfOption(action, options);
+                            self.pdfReportOption = 'download'; //action.default_print_option;
+                            return self._triggerDownload(action, options, 'pdf');
+                            //return self._showDialogPdfOption(action, options);
                         }
                     } else {
                         // open the report in the client action if generating the PDF is not possible
